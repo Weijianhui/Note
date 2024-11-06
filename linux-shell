@@ -1,0 +1,44 @@
+1.shell中变量自增的实现方法
+    i=`expr $i + 1`;
+    let i+=1;
+    ((i++));
+    i=$[$i+1];
+    i=$(( $i + 1 ))
+2.循环执行shell命令
+    while true; do <command> ;done;
+3.批量删除文件
+    find . -name "*.lnk" -exec rm {} \;
+4./etc/resolv.conf #dns配置
+5.lsof -i:9001 #查看占用9001端口的应用
+6.netstat -tunlp | grep 9001 #查看占用9001端口的进程
+7.对比文件夹输出有变化的内容
+    rsync --dry-run -rcnC --out-format="%n"  sx-room-1.2.0.1/  sx-room-1.2.0.0/ |grep -v "/$"|xargs -I{} rsync -R sx-room-1.2.0.1/{} patch/
+8.下载软件及相关依赖
+    apt-get download $(apt-cache depends --recurse --no-recommends --no-suggests --no-conflicts --no-breaks --no-replaces --no-enhances --no-pre-depends XXX | grep -v i386 | grep "^\w")
+    sudo apt-get download $(apt-cache depends --recurse --no-recommends --no-suggests --no-conflicts --no-breaks --no-replaces --no-enhances libgdiplus | grep "^\w" | sort -u)
+9.安装目录下所有应用
+    dpkg -i *.deb
+10.date -s "18:00:00" #修改时间
+11.hwclock --systohc #同步硬件时间
+12.timedatectl set-timezone "Asia/Shanghai" #修改时区
+13./etc/default/ntpupdate #修改时间服务器
+14.zip -r -q -o dist.zip dist/ #将dist目录压缩，命名为dist.zip
+15.unzip dist.zip #解压缩dist.zip文件
+16.wim使用
+    1.dd #删除当前行
+    2.ZZ #退出并保存
+    3.v+方向键 #可视化复制
+        yy #复制当前选中内容
+        p #粘贴当前选中内容
+    4.vim编辑文件时忘记切换到root
+        :w !sudo tee %
+17.sudo apt-get install cron
+    crontab -l #列出所有计划任务
+    crontab -e #编辑计划任务
+    crontab -r #删除所有计划任务
+18.pids=$(pidof NbSites.Web) #查询pid
+    for i in $pids
+    do
+        echo $i
+        ls -l  /proc/$i/cwd | awk '{print $11}' #打印对应pid运行路径
+    done

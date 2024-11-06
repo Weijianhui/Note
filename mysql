@@ -1,0 +1,9 @@
+1.mysql存储过大
+    systemctl stop mysqld
+    cd /usr/local/mysql/data/
+    rm -rf mysql-bin.000* # 删除
+    vim mysql-bin.index # 删除对应文件的记录
+    systemctl start mysqld
+2.关闭操作日志
+    vim /usr/local/mysql/my.cnf
+    注释掉log-bin=mysql-bin

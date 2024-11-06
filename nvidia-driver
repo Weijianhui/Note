@@ -1,0 +1,5 @@
+1.#驱动安装失败时，处理方式，完全卸载驱动
+sudo apt purge nvidia-*
+sudo ppa-purge ppa:graphics-drivers/ppa
+sudo apt autoremove
+sudo apt auto-clean

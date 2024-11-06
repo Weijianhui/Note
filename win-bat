@@ -1,0 +1,16 @@
+1.循环
+    set INTERVAL=5
+    :Start
+    adb shell input tap 200 800
+    adb shell input tap 200 500
+    timeout %INTERVAL%
+    goto Start
+    :end
+
+2.if exist "test.file" command #if用法
+    if exist "test.file" (脚本块)
+3.7z a -tzip sx.zip sx -r #使用7z进行压缩
+4.7z -x test.zip #解压文件，保留文件夹结构
+5.for /F "tokens=2" %%i in ('jps.lnk -l ^| findstr zonekey_arithmetic') do (set running_jar=%%i) #获取运行中的java程序
+6.for /F %%j in ('dir /b zonekey_arithmetic*') do (set jar-name=%%j) #获取当前目录的jar包
+7.for /F %%i in ('tasklist ^| findstr Sx.RoomSrv') do (set running_srv=%%i) #获取当前正在运行的程序

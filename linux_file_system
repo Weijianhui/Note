@@ -1,0 +1,12 @@
+1.Structure Needs Cleaning
+    su
+    fuser -kuc /dev/mmcblk1p9
+    # umount /media/linaro/(#id)
+    umount /dev/mmcblk1p9
+    # fsck.ext2 /media/linaro/(#id)
+    fsck.ext2 /dev/mmcblk1p9
+2.mount -o,rw / #挂载根目录为可读写
+    mount -o,ro / #挂载根目录为不可写
+3.开机挂载分区，修改/etc/fstab文件，添加内容
+    #挂载分区       访问路径            文件系统    模式        是否备份    是否使用fsck扫描
+    /dev/mmcblk1p9  /home/linaro/disk   ext2        defaults    0           2
