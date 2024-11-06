@@ -1,0 +1,11 @@
+:start
+	for /F "tokens=5,9" %%a in ('adb shell "top -n 1 | grep zonekey"') do (
+		set cpu=%%a
+		set mem_tmp=%%b
+	)
+	for /F "delims=K" %%a in ('echo %mem_tmp%') do (
+		set /A mem=%%a/1024
+	)
+	echo %time%,%cpu%,%mem% >> 1.csv
+	timeout /t 1
+goto start
